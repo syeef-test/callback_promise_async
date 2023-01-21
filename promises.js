@@ -37,28 +37,28 @@ function createPost(post){
     });    
 }
 
-function deletePost(){
+// function deletePost(){
 
-    return new Promise((resolve,reject)=>{
+//     return new Promise((resolve,reject)=>{
 
-        setTimeout(()=>{
+//         setTimeout(()=>{
             
-            const error = posts.pop();
-            if(error){
-                //console.log(error);
-                resolve();
-            }else{
-                //console.log(error);
-                reject('Array is empty now');
-            }
-        },2000);
+//             const error = posts.pop();
+//             if(error){
+//                 //console.log(error);
+//                 resolve();
+//             }else{
+//                 //console.log(error);
+//                 reject('Array is empty now');
+//             }
+//         },2000);
 
-    });
-}
+//     });
+// }
 
-createPost({title:'Post Three',body:'This is post three'})
-            .then(getPosts)
-            .catch(err => console.log(err));
+// createPost({title:'Post Three',body:'This is post three'})
+//             .then(getPosts)
+//             .catch(err => console.log(err));
 
 
 // deletePost(10000).then(getPosts).catch(err => console.log(err));
@@ -67,15 +67,15 @@ createPost({title:'Post Three',body:'This is post three'})
 //deletePost(40000).then(getPosts).catch(err => console.log(err));
 
 
-createPost({title:'Post Four',body:'This is post four'})
-            .then(()=>{
-                getPosts();
-                deletePost().then(()=>{
-                    getPosts();
-                }).catch(err =>console.log(err));
+// createPost({title:'Post Four',body:'This is post four'})
+//             .then(()=>{
+//                 getPosts();
+//                 deletePost().then(()=>{
+//                     getPosts();
+//                 }).catch(err =>console.log(err));
 
-            })
-            .catch(err => console.log(err));
+//             })
+//             .catch(err => console.log(err));
 
 //promise all
 // const promise1 = Promise.resolve('Hello World');
@@ -89,23 +89,54 @@ createPost({title:'Post Four',body:'This is post four'})
 // Promise.all([promise1,promise2,promise3,promise4]).then((values)=>console.log(values));
 
 
-function updateLastUserActivityTime(){
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            user.lastactivitytime = new Date().getTime();
-            console.log(user.lastactivitytime);
-            resolve(user.lastactivitytime);
-        },1000);
-    });
-};
+// function updateLastUserActivityTime(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             user.lastactivitytime = new Date().getTime();
+//             console.log(user.lastactivitytime);
+//             resolve(user.lastactivitytime);
+//         },1000);
+//     });
+// };
 
 
 //both function resolved then it return 
-function userupdatepost(){
-    Promise.all([createPost,updateLastUserActivityTime]).then(([createPostresolves,updateLastUserActivityTimeresolves])=>{
-        console.log(createPostresolves);
-        console.log(updateLastUserActivityTimeresolves);
-    }).catch(err=>console.log(err));//if one of function fail catch execuated.
-}
+// function userupdatepost(){
+//     Promise.all([createPost,updateLastUserActivityTime]).then(([createPostresolves,updateLastUserActivityTimeresolves])=>{
+//         console.log(createPostresolves);
+//         console.log(updateLastUserActivityTimeresolves);
+//     }).then(()=>{
+//         deletePost().then(()=>{
+//             getPosts();
+//         }).catch(err =>console.log(err));
+//     })
+//     .catch(err=>console.log(err));//if one of function fail catch execuated.
+// }
 
-userupdatepost();
+// userupdatepost();
+
+
+
+
+
+
+
+
+
+//Async/Await
+// async function init(){
+//     await createPost({title:'Post Three',body:'This is post three'});
+
+//     getPosts();
+// }
+
+// init();
+
+//Async /Await with fetch
+// async function fetchUsers(){
+//     const res = await fetch('https://jsonplaceholder.typicode.com/users');
+
+//     const data = await res.json();
+//     console.log(data);
+// }
+// fetchUsers();
